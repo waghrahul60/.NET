@@ -10,7 +10,6 @@ namespace Employee
     {
         static void Main(string[] args)
         {
-
             Employee o1 = new Employee("Amol", 2500, 10);
             Employee o2 = new Employee("Amol", 2300);
             Employee o3 = new Employee("Amol");
@@ -84,8 +83,7 @@ namespace Employee
         public int EmpNo
         {
             get
-            {
-                
+            {       
                 return ++empNo;
             }
         }
@@ -148,9 +146,6 @@ namespace Employee
             Console.WriteLine("Employee Salary : " + sal.GetNetSalary2());
 
             Console.WriteLine("===========================================");
-
-
-
         }
     }
 
@@ -162,8 +157,6 @@ namespace Employee
 
         public decimal GetNetSalary2()
         {
-           
-          
             BASIS = Convert.ToInt32(this.Basic);
             DA = (int)(0.4 * BASIS);
             HRA = (int)(0.3 * BASIS);
