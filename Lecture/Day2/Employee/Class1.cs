@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Employee
 {
-    public class Program
+    class Class1
     {
         static void Main(string[] args)
         {
-            Employee o1 = new Employee("Amol", 2500, 10);
-            Employee o2 = new Employee("Amol", 2300);
-            Employee o3 = new Employee("Amol");
-            Employee o4 = new Employee();
+            Employee1 o1 = new Employee1("Amol", 2500, 10);
+            Employee1 o2 = new Employee1("Amol", 2300);
+            Employee1 o3 = new Employee1("Amol");
+            Employee1 o4 = new Employee1();
             /*o1.GetData();
             o1.ShowData();*/
             /* Console.WriteLine(o1.Name);
@@ -45,11 +45,28 @@ namespace Employee
         }
     }
 
-    public class Employee
-    {  
-        public Employee(string name="Rahul", decimal basic=2500, short deptNo=10)
+    public class Employee1
+    {
+        public Employee1()
         {
-            this.EmpNo = ++empNo;
+
+        }
+
+        public Employee1(string name)
+        {
+            this.Name = name;
+
+        }
+        public Employee1(string name, decimal basic)
+        {
+            this.Name = name;
+            this.Basic = basic;
+            this.DeptNo = 10;
+
+        }
+        public Employee1(string name, decimal basic, short deptNo)
+        {
+            this.EmpNo = 20;
             this.Name = name;
             this.Basic = basic;
             this.DeptNo = deptNo;
@@ -76,12 +93,13 @@ namespace Employee
         }
 
         // private static int lastEmpNo = 0;
-        private static int empNo = 0;
+        private static int empNo;
         public int EmpNo
         {
-            get;
-            
-            private set;
+            get
+            {
+                return empNo;
+            }
         }
 
         protected decimal basic;
@@ -161,4 +179,5 @@ namespace Employee
         }
 
     }
+}
 }
