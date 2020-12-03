@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -103,7 +103,7 @@ namespace InheritanceExamples2
  * privte => same class
  * protected => same class, derived class
  * internal => same class, same assembly(same project)
- * protected internal => same class, derived class, same assembly
+ * protected internal => same class, derived class, same assembly 
  * code reusability
  * 
  * 
