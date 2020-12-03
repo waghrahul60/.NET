@@ -11,7 +11,7 @@ namespace Employee
         public static void Main()
         {
             Console.WriteLine("============Manager=================");
-            Employee o1 = new Manager("Managet", "Amit", 3000, 11);
+            Employee o1 = new Manager("Managet", "Amit", 300, 11);
             o1.DisplayData();
             Console.ReadLine();
 
@@ -32,7 +32,7 @@ namespace Employee
     }
     public abstract class Employee
     {
-        public Employee(string name = "Rahul", decimal basic = 2500, short deptNo = 10)
+        public Employee(string name = "No name", decimal basic = 2500, short deptNo = 10)
         {
             this.EmpNo = ++empNo;
             this.Name = name;
@@ -68,7 +68,7 @@ namespace Employee
             private set;
         }
 
-        private decimal basic;
+        protected decimal basic;
         public abstract decimal Basic { get; set; }
 
 
@@ -110,15 +110,28 @@ namespace Employee
         public int BASIS, DA, HRA;
         public decimal GROSS;
 
-        public override decimal Basic { get; set; }
+        public override decimal Basic {
+            set
+            {
+                if (100 < value && value < 1000)
+                {
+                    basic = value;
+                }
+                else
+                {
+                    Console.WriteLine("Enter value between 100 and 1000 :");
+                }
+            }
+            get
+            {
+                return basic;
+            }
+        }
 
 
         public Manager(string designation = "manager", string name = "Rahul", decimal basic = 2500, short deptNo = 10) : base(name, basic, deptNo)
         {
             this.Designation = designation;
-            this.Name = name;
-            this.Basic = basic;
-            this.DeptNo = deptNo;
         }
         private string designation;
         public string Designation
@@ -164,16 +177,30 @@ namespace Employee
         {
             get; set;
         }
+        public override decimal Basic
+        {
+            set
+            {
+                if (1000 < value && value < 10000)
+                {
+                    basic = value;
+                }
+                else
+                {
+                    Console.WriteLine("Enter value between 1000 and 10000 :");
+                }
+            }
+            get
+            {
+                return basic;
+            }
+        }
 
 
 
         public GenerelManager(string perks = "KitKat", string designation = "manager", string name = "Rahul", decimal basic = 2500, short deptNo = 10) : base(designation, name, basic, deptNo)
         {
             this.Perks = perks;
-            this.Designation = designation;
-            this.Name = name;
-            this.Basic = basic;
-            this.DeptNo = deptNo;
         }
 
 
@@ -195,13 +222,29 @@ namespace Employee
 
     public class CEO : Employee
     {
-        public override decimal Basic { get; set; }
+        public override decimal Basic {
+            set
+            {
+                if (10000 < value && value < 100000)
+                {
+                    basic = value;
+                }
+                else
+                {
+                    Console.WriteLine("Enter value between 10000 and 100000 :");
+                }
+            }
+            get
+            {
+                return basic;
+            }
+        }
 
         public CEO(string name = "Rahul", decimal basic = 5000, short deptNo = 100) : base(name, basic, deptNo)
         {
-            this.Name = name;
+           /* this.Name = name;
             this.Basic = basic;
-            this.DeptNo = deptNo;
+            this.DeptNo = deptNo;*/
         }
 
         public int BASIS, DA, HRA;
