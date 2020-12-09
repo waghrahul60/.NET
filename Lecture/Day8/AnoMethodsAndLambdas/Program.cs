@@ -12,6 +12,7 @@ namespace AnoMethodsAndLambdas
         {
             Action o1 = Display;
             o1();
+            
 
             Action<string> o2 = Display;
             o2("aaa");
