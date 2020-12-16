@@ -11,7 +11,7 @@ namespace Assignment
         static void Main(string[] args)
         {
             Console.WriteLine("======================Simpleintrest=======================");
-            Func<decimal , decimal , decimal, decimal> o = (p,n,r) => (p*n*r);
+            Func<decimal , decimal , decimal, decimal> o = (p,n,r) => ((p*n*r)/100);
             Console.WriteLine(o(10, 20,30));
 
             Console.WriteLine("======================IsGreater=======================");

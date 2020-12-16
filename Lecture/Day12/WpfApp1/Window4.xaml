@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfApp1.Window4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Window4" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <ListBox x:Name="lstNames1" HorizontalAlignment="Left" Height="214" Margin="138,84,0,0" VerticalAlignment="Top" Width="156" SelectionMode="Multiple" SelectionChanged="lstNames1_SelectionChanged"/>
+        <ListBox x:Name="lstNames2" HorizontalAlignment="Left" Height="214" Margin="475,84,0,0" VerticalAlignment="Top" Width="156" SelectionMode="Multiple"/>
+        <Button x:Name="btnRight" Content="&gt;" HorizontalAlignment="Left" Margin="352,57,0,0" VerticalAlignment="Top" Width="60" Height="43" Click="btnRight_Click"/>
+        <Button x:Name="btnAllRight" Content="&gt;&gt;" HorizontalAlignment="Left" Margin="352,138,0,0" VerticalAlignment="Top" Width="60" Height="41" Click="btnAllRight_Click"/>
+        <Button x:Name="btnLeft" Content="&lt;" HorizontalAlignment="Left" Margin="352,209,0,0" VerticalAlignment="Top" Width="60" Height="43" Click="btnLeft_Click"/>
+        <Button x:Name="btnAllLeft" Content="&lt;&lt;" HorizontalAlignment="Left" Margin="352,279,0,0" VerticalAlignment="Top" Width="60" Height="42" Click="btnAllLeft_Click"/>
+
+    </Grid>
+</Window>
