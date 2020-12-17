@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Second";
+}
+
+<h2>Second</h2>
+Id = @ViewBag.Id
+a = @ViewBag.a
+b = @ViewBag.b
+c = @ViewBag.c
+
+
+
+@{
+    string s = "abc";
+    int i = 100;
+    i = ViewBag.a;
+}
+
+i = @i;
+
+@{
+    if (i % 2 == 0)
+    {
+        s = "Even";
+
+    }
+    else
+    {
+        s = "odd";
+    }
+}
+<br />
+i = @i
+<br />
+s= @s
+
+
+<br />
+
+@if (i % 2 == 0)
+{
+    @:result = <h1>even</h1><br />
+
+
+}
+else
+{
+   @:result = <h1>odd</h1><br />
+}
+
+
+<table border="1">
+    @for (int j = 1; j < 5; j++)
+    {
+        <tr>
+            <td>@j</td>
+            <td>*</td>
+            <td>5</td>
+            <td>=</td>
+            <td>@(j*5)</td>
+        </tr>
+
+      }
+</table>
