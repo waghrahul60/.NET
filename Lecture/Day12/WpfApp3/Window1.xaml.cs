@@ -92,7 +92,7 @@ namespace WpfApp3
             p.SourceColumn = "Name";
             p.SourceVersion = DataRowVersion.Current;
             cmdUpdate.Parameters.Add(p);
-*/
+            */
 
             cmdUpdate.Parameters.Add(new SqlParameter { ParameterName = "@Name", SourceColumn = "Name" , SourceVersion = DataRowVersion.Current});
             cmdUpdate.Parameters.Add(new SqlParameter { ParameterName = "@Basic", SourceColumn = "Basic", SourceVersion = DataRowVersion.Current });
