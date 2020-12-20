@@ -12,8 +12,6 @@ namespace ModelBindingAndDbCode.Controllers
 {
     public class EmployeeController : Controller
     {
-        
-
         // GET: Employee
         public ActionResult Index()
         {
@@ -30,6 +28,23 @@ namespace ModelBindingAndDbCode.Controllers
 
             SqlDataReader dr = cmd.ExecuteReader();  //null(EOF)
 
+            //Dept
+            SqlCommand cmdDept = new SqlCommand();
+            cmdDept.Connection = cn;
+            cmdDept.CommandType = System.Data.CommandType.Text;
+            cmdDept.CommandText = "select * from Department";
+
+            SqlDataReader drDept = cmd.ExecuteReader();
+
+            List<SelectListItem> objDepts = new List<SelectListItem>();
+            while(drDept.Read())
+            {
+                SelectListItem item = new SelectListItem();
+                item.Text = drDept["DeptName"].ToString();
+                item.Value = drDept["DeptNo"].ToString();
+
+            }
+
             while (dr.Read())
             {
                 Employee emp = new Employee();
@@ -37,9 +52,10 @@ namespace ModelBindingAndDbCode.Controllers
                 emp.Name = dr["Name"].ToString();
                 emp.Basic = Convert.ToInt32(dr["Basic"]);
                 emp.DeptNo = Convert.ToInt32(dr["DeptNo"]);
-
+                emp.Departments = objDepts;
                 objEmpList.Add(emp);
             }
+
 
             dr.Close();
 
@@ -49,7 +65,7 @@ namespace ModelBindingAndDbCode.Controllers
         }
 
         // GET: Employee/Details/5
-        public ActionResult Details(int id=0)
+        public ActionResult Details(int EmpNo=0)
         {
             Employee emp = new Employee();
  
@@ -60,7 +76,7 @@ namespace ModelBindingAndDbCode.Controllers
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = cn;
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "select * from Employees where EmpNo ="+id;
+            cmd.CommandText = "select * from Employees where EmpNo ="+ EmpNo;
 
             SqlDataReader dr = cmd.ExecuteReader();  //null(EOF)
 
@@ -118,7 +134,7 @@ namespace ModelBindingAndDbCode.Controllers
         }
 
         // GET: Employee/Edit/5
-        public ActionResult Edit(int id=0)
+        public ActionResult Edit(int EmpNo = 0)
         {
             Employee emp = new Employee();
 
@@ -129,7 +145,7 @@ namespace ModelBindingAndDbCode.Controllers
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = cn;
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "select * from Employees where EmpNo =" + id;
+            cmd.CommandText = "select * from Employees where EmpNo =" + EmpNo;
 
             SqlDataReader dr = cmd.ExecuteReader();  //null(EOF)
 
@@ -169,7 +185,7 @@ namespace ModelBindingAndDbCode.Controllers
          */
         // POST: Employee/Edit/5
         [HttpPost]
-        public ActionResult Edit(int? id, Employee emp)
+        public ActionResult Edit(int? EmpNo, Employee emp)
         {
             try
             {
@@ -182,7 +198,7 @@ namespace ModelBindingAndDbCode.Controllers
                 SqlCommand cmdUpdate = new SqlCommand();
                 cmdUpdate.Connection = cn;
                 cmdUpdate.CommandType = System.Data.CommandType.Text;
-                cmdUpdate.CommandText = "update Employees set Name = @Name, Basic = @Basic, DeptNo = @DeptNo where EmpNo = "+id;
+                cmdUpdate.CommandText = "update Employees set Name = @Name, Basic = @Basic, DeptNo = @DeptNo where EmpNo = "+ EmpNo;
 
 
                 cmdUpdate.Parameters.AddWithValue("@Name",emp.Name);
@@ -204,7 +220,7 @@ namespace ModelBindingAndDbCode.Controllers
         }
 
         // GET: Employee/Delete/5
-        public ActionResult Delete(int id=0)
+        public ActionResult Delete(int EmpNo = 0)
         {
             Employee emp = new Employee();
 
@@ -215,7 +231,7 @@ namespace ModelBindingAndDbCode.Controllers
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = cn;
             cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "select * from Employees where EmpNo =" + id;
+            cmd.CommandText = "select * from Employees where EmpNo =" + EmpNo;
 
             SqlDataReader dr = cmd.ExecuteReader();  //null(EOF)
 
@@ -236,7 +252,7 @@ namespace ModelBindingAndDbCode.Controllers
 
         // POST: Employee/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, Employee obj)
+        public ActionResult Delete(int EmpNo, Employee obj)
         {
             try
             {
@@ -248,7 +264,7 @@ namespace ModelBindingAndDbCode.Controllers
                 SqlCommand cmdUpdate = new SqlCommand();
                 cmdUpdate.Connection = cn;
                 cmdUpdate.CommandType = System.Data.CommandType.Text;
-                cmdUpdate.CommandText = "DELETE FROM Employees WHERE EmpNo =" + id;
+                cmdUpdate.CommandText = "DELETE FROM Employees WHERE EmpNo =" + EmpNo;
                 cmdUpdate.ExecuteScalar();
 
 
