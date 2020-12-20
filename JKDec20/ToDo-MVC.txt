@@ -1,0 +1,14 @@
+To Do
+-------------
+
+Add a controller
+Add a method ( return string, View())
+Add a view
+- Add a view with no layout
+- Add a view with _Layout
+Add your layout
+- Add a view with MyLayout
+
+RouteConfig.cs
+---- change the default settings for default controller, default method
+

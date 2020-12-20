@@ -1,0 +1,28 @@
+Employee [] arr = new Employee[5];
+
+
+for(....)
+{
+	arr[i] = new Employee();
+	//arr[i].Accept();
+
+	arr[i].EmpNo = ....;
+	arr[i].Name = ....;
+
+
+}
+-----------------------------------
+
+struct Student
+{
+	public Student( int RollNo = 1, string Name= "Noname", decimal Marks=0)
+	{
+		this.rollNo = 0;
+		this.name = "aa";
+
+		this.RollNo = RollNo;
+.....
+
+	}
+
+}
