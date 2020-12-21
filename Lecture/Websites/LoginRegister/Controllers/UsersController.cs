@@ -164,7 +164,7 @@ namespace LoginRegister.Controllers
                     cmdCreate.ExecuteNonQuery();
 
                     cn.Close();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Login");
                 }
                 catch(Exception ex)
                 {
@@ -191,8 +191,8 @@ namespace LoginRegister.Controllers
              }
              else
              {
-                 return View("HomePage");
-             }
+                 return RedirectToAction("HomePage", "Home");
+            }
            
         }
 
@@ -215,7 +215,7 @@ namespace LoginRegister.Controllers
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = cn;
                 cmd.CommandType = System.Data.CommandType.Text;
-                cmd.CommandText = "select * from users where LoginName = @LoginName and Password = @Password";
+                cmd.CommandText = "select * from students where LoginName = @LoginName and Password = @Password";
                 cmd.Parameters.AddWithValue("@LoginName", login.LoginName);
                 cmd.Parameters.AddWithValue("@Password", login.Password);
 
@@ -248,7 +248,7 @@ namespace LoginRegister.Controllers
                      }
 
 
-                    return RedirectToAction("HomePage",login);
+                    return RedirectToAction("HomePage","Home");
                 }
                 else
                 {

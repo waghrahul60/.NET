@@ -49,5 +49,6 @@ namespace FullAppliation.Models
 
         [Required(ErrorMessage = "Please enter Phone")]
         public IEnumerable<SelectListItem> cities { get; set; }
+        public bool RememberMe { get; internal set; }
     }
 }
